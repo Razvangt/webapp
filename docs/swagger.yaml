@@ -1,0 +1,89 @@
+definitions:
+  album.album:
+    properties:
+      artist:
+        type: string
+      id:
+        type: string
+      price:
+        type: number
+      title:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /albums:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - albums
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/album.album'
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - albums
+  /albums/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - albums
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - albums
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/album.album'
+      produces:
+      - application/json
+      responses: {}
+      tags:
+      - albums
+swagger: "2.0"

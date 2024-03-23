@@ -33,7 +33,7 @@ func find(id *string) (album, error) {
 
 func update(updated *album) error {
 	for index, a := range albums {
-		if a.ID == *&updated.ID {
+		if a.ID == updated.ID {
 			albums[index] = *updated
 			return nil
 		}
@@ -44,18 +44,9 @@ func update(updated *album) error {
 func delete(id *string) error {
 	for index, a := range albums {
 		if a.ID == *id {
-			removeNoOrder(albums, index)
+			albums = append(albums[:index], albums[index+1:]...)
 			return nil
 		}
 	}
 	return errors.New("id not found")
-}
-
-func removeNoOrder(s []album, i int) []album {
-	s[i] = s[len(s)-1]
-	return s[:len(s)-1]
-}
-
-func removeaWithOrder(slice []album, s int) []album {
-	return append(slice[:s], slice[s+1:]...)
 }
