@@ -24,6 +24,16 @@ services:
       - postgres-network
     volumes:
       - pgadmin:/var/lib/pgadmin/
+  api:
+    image: webapp
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    networks:
+      - postgres-network
+    environment:
+      DB_HOST: webapp-database-1
 volumes:
   db:
   pgadmin:
