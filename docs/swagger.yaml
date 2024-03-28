@@ -1,9 +1,7 @@
 definitions:
-  album.album:
+  album.newAlbumRequest:
     properties:
       artist:
-        type: string
-      id:
         type: string
       price:
         type: number
@@ -31,7 +29,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/album.album'
+          $ref: '#/definitions/album.newAlbumRequest'
       produces:
       - application/json
       responses: {}
@@ -80,7 +78,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/album.album'
+          $ref: '#/definitions/album.newAlbumRequest'
       produces:
       - application/json
       responses: {}

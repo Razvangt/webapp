@@ -34,7 +34,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/album.album"
+                            "$ref": "#/definitions/album.newAlbumRequest"
                         }
                     }
                 ],
@@ -87,7 +87,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/album.album"
+                            "$ref": "#/definitions/album.newAlbumRequest"
                         }
                     }
                 ],
@@ -117,13 +117,10 @@
         }
     },
     "definitions": {
-        "album.album": {
+        "album.newAlbumRequest": {
             "type": "object",
             "properties": {
                 "artist": {
-                    "type": "string"
-                },
-                "id": {
                     "type": "string"
                 },
                 "price": {

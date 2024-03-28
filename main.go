@@ -1,15 +1,28 @@
 package main
 
 import (
-	"github.com/Razvangt/webapp/album"
-	docs "github.com/Razvangt/webapp/docs"
+	"log"
+	"os"
+	"webapp/album"
+	"webapp/common"
+	docs "webapp/docs"
+
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	// Router
+	db := common.Init()
+	db.AutoMigrate(&album.Album{})
 	router := gin.Default()
+
 	docs.SwaggerInfo.BasePath = "/api/v1"
 	v1 := router.Group("/api/v1")
 	{
@@ -17,5 +30,6 @@ func main() {
 	}
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 
-	router.Run(":8080") // listen and serve localhost:8080
+	api_port := ":" + os.Getenv("API_PORT")
+	router.Run(api_port) // listen and serve localhost:8080
 }

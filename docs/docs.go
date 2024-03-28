@@ -45,7 +45,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/album.album"
+                            "$ref": "#/definitions/album.newAlbumRequest"
                         }
                     }
                 ],
@@ -98,7 +98,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/album.album"
+                            "$ref": "#/definitions/album.newAlbumRequest"
                         }
                     }
                 ],
@@ -128,13 +128,10 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "album.album": {
+        "album.newAlbumRequest": {
             "type": "object",
             "properties": {
                 "artist": {
-                    "type": "string"
-                },
-                "id": {
                     "type": "string"
                 },
                 "price": {
